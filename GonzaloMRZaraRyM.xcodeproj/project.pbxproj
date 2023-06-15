@@ -8,17 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		99F1B8AF2A3A3D4A000E6C88 /* GonzaloMRZaraRyMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8AE2A3A3D4A000E6C88 /* GonzaloMRZaraRyMApp.swift */; };
-		99F1B8B12A3A3D4A000E6C88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8B02A3A3D4A000E6C88 /* ContentView.swift */; };
 		99F1B8B32A3A3D4C000E6C88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F1B8B22A3A3D4C000E6C88 /* Assets.xcassets */; };
 		99F1B8B62A3A3D4C000E6C88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F1B8B52A3A3D4C000E6C88 /* Preview Assets.xcassets */; };
+		99F1B8BE2A3A3EAB000E6C88 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8BD2A3A3EAB000E6C88 /* NetworkClient.swift */; };
+		99F1B8C02A3A3F10000E6C88 /* RyMEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8BF2A3A3F10000E6C88 /* RyMEndPoint.swift */; };
+		99F1B8C22A3A3F4D000E6C88 /* RyMServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8C12A3A3F4D000E6C88 /* RyMServices.swift */; };
+		99F1B8C52A3A4040000E6C88 /* RyMModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8C42A3A4040000E6C88 /* RyMModels.swift */; };
+		99F1B8C82A3A420F000E6C88 /* RyMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8C72A3A420F000E6C88 /* RyMViewModel.swift */; };
+		99F1B8CB2A3B0EBE000E6C88 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8CA2A3B0EBE000E6C88 /* ListView.swift */; };
+		99F1B8CD2A3B1FBA000E6C88 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8CC2A3B1FBA000E6C88 /* DetailView.swift */; };
+		99F1B8D02A3B3E03000E6C88 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F1B8CF2A3B3E03000E6C88 /* CacheAsyncImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		99F1B8AB2A3A3D4A000E6C88 /* GonzaloMRZaraRyM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GonzaloMRZaraRyM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F1B8AE2A3A3D4A000E6C88 /* GonzaloMRZaraRyMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GonzaloMRZaraRyMApp.swift; sourceTree = "<group>"; };
-		99F1B8B02A3A3D4A000E6C88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		99F1B8B22A3A3D4C000E6C88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99F1B8B52A3A3D4C000E6C88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		99F1B8BD2A3A3EAB000E6C88 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		99F1B8BF2A3A3F10000E6C88 /* RyMEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RyMEndPoint.swift; sourceTree = "<group>"; };
+		99F1B8C12A3A3F4D000E6C88 /* RyMServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RyMServices.swift; sourceTree = "<group>"; };
+		99F1B8C42A3A4040000E6C88 /* RyMModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RyMModels.swift; sourceTree = "<group>"; };
+		99F1B8C72A3A420F000E6C88 /* RyMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RyMViewModel.swift; sourceTree = "<group>"; };
+		99F1B8CA2A3B0EBE000E6C88 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		99F1B8CC2A3B1FBA000E6C88 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		99F1B8CF2A3B3E03000E6C88 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +65,12 @@
 		99F1B8AD2A3A3D4A000E6C88 /* GonzaloMRZaraRyM */ = {
 			isa = PBXGroup;
 			children = (
+				99F1B8CE2A3B3DEE000E6C88 /* Utils */,
+				99F1B8C92A3B0E72000E6C88 /* Views */,
+				99F1B8C62A3A41F6000E6C88 /* ViewModels */,
+				99F1B8C32A3A3F73000E6C88 /* Model */,
+				99F1B8BC2A3A3E19000E6C88 /* Provider */,
 				99F1B8AE2A3A3D4A000E6C88 /* GonzaloMRZaraRyMApp.swift */,
-				99F1B8B02A3A3D4A000E6C88 /* ContentView.swift */,
 				99F1B8B22A3A3D4C000E6C88 /* Assets.xcassets */,
 				99F1B8B42A3A3D4C000E6C88 /* Preview Content */,
 			);
@@ -65,6 +83,49 @@
 				99F1B8B52A3A3D4C000E6C88 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		99F1B8BC2A3A3E19000E6C88 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				99F1B8BD2A3A3EAB000E6C88 /* NetworkClient.swift */,
+				99F1B8BF2A3A3F10000E6C88 /* RyMEndPoint.swift */,
+				99F1B8C12A3A3F4D000E6C88 /* RyMServices.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		99F1B8C32A3A3F73000E6C88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99F1B8C42A3A4040000E6C88 /* RyMModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		99F1B8C62A3A41F6000E6C88 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				99F1B8C72A3A420F000E6C88 /* RyMViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		99F1B8C92A3B0E72000E6C88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				99F1B8CA2A3B0EBE000E6C88 /* ListView.swift */,
+				99F1B8CC2A3B1FBA000E6C88 /* DetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		99F1B8CE2A3B3DEE000E6C88 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				99F1B8CF2A3B3E03000E6C88 /* CacheAsyncImage.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +198,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99F1B8B12A3A3D4A000E6C88 /* ContentView.swift in Sources */,
+				99F1B8CB2A3B0EBE000E6C88 /* ListView.swift in Sources */,
+				99F1B8CD2A3B1FBA000E6C88 /* DetailView.swift in Sources */,
+				99F1B8C02A3A3F10000E6C88 /* RyMEndPoint.swift in Sources */,
+				99F1B8C82A3A420F000E6C88 /* RyMViewModel.swift in Sources */,
 				99F1B8AF2A3A3D4A000E6C88 /* GonzaloMRZaraRyMApp.swift in Sources */,
+				99F1B8C22A3A3F4D000E6C88 /* RyMServices.swift in Sources */,
+				99F1B8C52A3A4040000E6C88 /* RyMModels.swift in Sources */,
+				99F1B8BE2A3A3EAB000E6C88 /* NetworkClient.swift in Sources */,
+				99F1B8D02A3B3E03000E6C88 /* CacheAsyncImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
