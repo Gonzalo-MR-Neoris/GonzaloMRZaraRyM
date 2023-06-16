@@ -19,22 +19,18 @@ struct ListView: View {
                         ForEach(searchResults, id: \.id) { character in
                             GeometryReader { geometry in
                                 NavigationLink(value: character) {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .foregroundColor(Color(red: 0.227, green: 0.243, blue: 0.265, opacity: 0.2))
-                                        ListCellView(character: character)
-                                            .onChange(of: geometry.frame(in: .global).minY) { y in
-                                                let threshold: CGFloat = 12
-                                                let screenBottom = proxy.size.height
-                                                if y > screenBottom - threshold && y < screenBottom + threshold {
-                                                    if searchResults.last?.id == character.id, searchText.isEmpty {
-                                                        Task {
-                                                            await viewModel.getNextPage()
-                                                        }
+                                    ListCellView(character: character)
+                                        .onChange(of: geometry.frame(in: .global).minY) { y in
+                                            let threshold: CGFloat = 12
+                                            let screenBottom = proxy.size.height
+                                            if y > screenBottom - threshold && y < screenBottom + threshold {
+                                                if searchResults.last?.id == character.id, searchText.isEmpty {
+                                                    Task {
+                                                        await viewModel.getNextPage()
                                                     }
                                                 }
                                             }
-                                    }
+                                        }
                                 }
                             }.frame(height: 120)
                         }
@@ -72,66 +68,77 @@ struct ListView: View {
 struct ListCellView: View {
     @State var character: RyMResult!
     
+    var randomColor : [Color] = [
+        Color("gradiant-1"),
+        Color("gradiant-2"),
+        Color("gradiant-3")
+    ]
+    
     var body: some View {
-        HStack {
-            if let url = URL(string: character.image) {
-                CacheAsyncImage(url: url) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                    case .success(let image):
-                        image.resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(12)
-                    case .failure:
-                        Image("error")
-                            .resizable()
-                            .scaledToFit()
-                    @unknown default:
-                        Image("error")
-                            .resizable()
-                            .scaledToFit()
-                    }
-                }
-            } else {
-                Image("error")
-                    .resizable()
-                    .scaledToFit()
-            }
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .fill(LinearGradient(colors: randomColor.shuffled(), startPoint: .leading, endPoint: .top))
             
-            VStack {
-                Text(character.name)
-                    .font(.title)
-                    .foregroundColor(Color.black)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                HStack {
-                    switch character.status {
-                    case .alive:
-                        Circle()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.green)
-                    case .dead:
-                        Circle()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.red)
-                    case .unknown:
-                        Circle()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.brown)
+            HStack {
+                if let url = URL(string: character.image) {
+                    CacheAsyncImage(url: url) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                        case .success(let image):
+                            image.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(12)
+                        case .failure:
+                            Image("error")
+                                .resizable()
+                                .scaledToFit()
+                        @unknown default:
+                            Image("error")
+                                .resizable()
+                                .scaledToFit()
+                        }
                     }
-                    Text(character.status.rawValue)
-                        .foregroundColor(Color.black)
-                    Text(" - ")
-                        .foregroundColor(Color.black)
-                    Text(character.species)
-                        .foregroundColor(Color.black)
+                } else {
+                    Image("error")
+                        .resizable()
+                        .scaledToFit()
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                VStack {
+                    Text(character.name)
+                        .font(.title)
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack {
+                        switch character.status {
+                        case .alive:
+                            Circle()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.green)
+                        case .dead:
+                            Circle()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.red)
+                        case .unknown:
+                            Circle()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.brown)
+                        }
+                        Text(character.status.rawValue)
+                            .foregroundColor(Color.white)
+                        Text(" - ")
+                            .foregroundColor(Color.white)
+                        Text(character.species)
+                            .foregroundColor(Color.white)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 8.0)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 8.0)
+            .frame(height: 120)
         }
-        .frame(height: 120)
     }
 }
 

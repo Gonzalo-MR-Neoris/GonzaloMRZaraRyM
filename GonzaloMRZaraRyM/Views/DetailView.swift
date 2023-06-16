@@ -21,76 +21,78 @@ struct DetailView: View {
     }
     
     var HeaderView: some View {
-        HStack(alignment: .center) {
-            if let url = URL(string: character.image) {
-                CacheAsyncImage(url: url) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                    case .success(let image):
-                        image.resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Circle())
-                            .overlay {
-                                switch character.status {
-                                case .alive:
-                                    Circle()
-                                        .stroke(
-                                            Color(.green)
-                                        )
-                                        .padding(.all, -3)
-                                case .dead:
-                                    Circle()
-                                        .stroke(
-                                            Color(.red)
-                                        )
-                                        .padding(.all, -3)
-                                case .unknown:
-                                    Circle()
-                                        .stroke(
-                                            Color(.brown)
-                                        )
-                                        .padding(.all, -3)
-                                }
-                            }
-                    case .failure:
-                        Image("error")
-                            .resizable()
-                            .scaledToFit()
-                    @unknown default:
-                        Image("error")
-                            .resizable()
-                            .scaledToFit()
-                    }
-                }
-            } else {
-                Image("error")
-                    .resizable()
-                    .scaledToFit()
-            }
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundColor(Color(red: 0.664, green: 0.829, blue: 0.913))
+                .frame(height: 120)
             
-            Divider().foregroundColor(.black)
-            VStack {
-                Text(character.name)
-                    .font(.title)
-                    .foregroundColor(Color.black)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                HStack {
-                    Text(character.status.rawValue)
-                        .foregroundColor(Color.black)
-                    Text(" - ")
-                        .foregroundColor(Color.black)
-                    Text(character.species)
-                        .foregroundColor(Color.black)
+            HStack(alignment: .center) {
+                if let url = URL(string: character.image) {
+                    CacheAsyncImage(url: url) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                        case .success(let image):
+                            image.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(Circle())
+                                .overlay {
+                                    switch character.status {
+                                    case .alive:
+                                        Circle()
+                                            .stroke(
+                                                Color(.green)
+                                            )
+                                            .padding(.all, -3)
+                                    case .dead:
+                                        Circle()
+                                            .stroke(
+                                                Color(.red)
+                                            )
+                                            .padding(.all, -3)
+                                    case .unknown:
+                                        Circle()
+                                            .stroke(
+                                                Color(.brown)
+                                            )
+                                            .padding(.all, -3)
+                                    }
+                                }
+                        case .failure:
+                            Image("error")
+                                .resizable()
+                                .scaledToFit()
+                        @unknown default:
+                            Image("error")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                } else {
+                    Image("error")
+                        .resizable()
+                        .scaledToFit()
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Divider().foregroundColor(.black)
+                VStack {
+                    Text(character.name)
+                        .font(.title)
+                        .foregroundColor(Color.black)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack {
+                        Text(character.status.rawValue)
+                            .foregroundColor(Color.black)
+                        Text(" - ")
+                            .foregroundColor(Color.black)
+                        Text(character.species)
+                            .foregroundColor(Color.black)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
-        }
-        .padding(.all, 12.0)
-        .frame(maxWidth: .infinity, maxHeight: 120, alignment: .top)
-        .overlay {
-            Capsule(style: .continuous)
-                .stroke(Color.gray, style: StrokeStyle(lineWidth: 2))
+            .padding(.all, 12.0)
+            .frame(maxWidth: .infinity, maxHeight: 120, alignment: .top)
         }
     }
     
