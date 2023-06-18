@@ -18,6 +18,7 @@ struct DetailView: View {
             Spacer()
         }
         .padding(.all, 12.0)
+        .background(Color("background"))
     }
     
     var HeaderView: some View {
@@ -27,66 +28,60 @@ struct DetailView: View {
                 .frame(height: 120)
             
             HStack(alignment: .center) {
-                if let url = URL(string: character.image) {
-                    CacheAsyncImage(url: url) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView()
-                        case .success(let image):
-                            image.resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Circle())
-                                .overlay {
-                                    switch character.status {
-                                    case .alive:
-                                        Circle()
-                                            .stroke(
-                                                Color(.green)
-                                            )
-                                            .padding(.all, -3)
-                                    case .dead:
-                                        Circle()
-                                            .stroke(
-                                                Color(.red)
-                                            )
-                                            .padding(.all, -3)
-                                    case .unknown:
-                                        Circle()
-                                            .stroke(
-                                                Color(.brown)
-                                            )
-                                            .padding(.all, -3)
-                                    }
+                CachedAsyncImage(url: URL(string: character.image)) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .overlay {
+                                switch character.status {
+                                case .alive:
+                                    Circle()
+                                        .stroke(
+                                            Color(.green)
+                                        )
+                                        .padding(.all, -3)
+                                case .dead:
+                                    Circle()
+                                        .stroke(
+                                            Color(.red)
+                                        )
+                                        .padding(.all, -3)
+                                case .unknown:
+                                    Circle()
+                                        .stroke(
+                                            Color(.brown)
+                                        )
+                                        .padding(.all, -3)
                                 }
-                        case .failure:
-                            Image("error")
-                                .resizable()
-                                .scaledToFit()
-                        @unknown default:
-                            Image("error")
-                                .resizable()
-                                .scaledToFit()
-                        }
+                            }
+                    case .failure:
+                        Image("error")
+                            .resizable()
+                            .scaledToFit()
+                    @unknown default:
+                        Image("error")
+                            .resizable()
+                            .scaledToFit()
                     }
-                } else {
-                    Image("error")
-                        .resizable()
-                        .scaledToFit()
                 }
                 
-                Divider().foregroundColor(.black)
+                Divider().foregroundColor(Color("text"))
                 VStack {
                     Text(character.name)
                         .font(.title)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("text"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     HStack {
                         Text(character.status.rawValue)
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color("text"))
                         Text(" - ")
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color("text"))
                         Text(character.species)
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color("text"))
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -104,12 +99,12 @@ struct DetailView: View {
                 VStack {
                     Text("Origin:")
                         .font(.title2)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("text"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 1)
                     Text(character.origin.name)
-                        .foregroundColor(Color.black)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(Color("text"))
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 12.0)
@@ -126,12 +121,12 @@ struct DetailView: View {
                 VStack {
                     Text("Location:")
                         .font(.title2)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("text"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 1)
                     Text(character.location.name)
-                        .foregroundColor(Color.black)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(Color("text"))
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 12.0)
